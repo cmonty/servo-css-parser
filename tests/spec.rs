@@ -12,17 +12,11 @@ specific language governing permissions and limitations under the License.
 #![allow(clippy::identity_op)]
 
 use cssparser;
-use html5ever;
-use parking_lot;
-use selectors;
-use servo_atoms;
 use servo_css_parser;
 use style;
 
 use cssparser::SourceLocation;
-use html5ever::Namespace;
-use selectors::parser::{Combinator, Component, Selector, SelectorList};
-use servo_atoms::Atom;
+use cssparser::RGBA;
 use servo_css_parser::parse;
 use servo_css_parser::types::{MediaList, Origin, QuirksMode, Url};
 use style::properties::declaration_block::{Importance, PropertyDeclarationBlock};
@@ -61,7 +55,7 @@ fn test_simple() {
                     (
                         PropertyDeclaration::BackgroundColor(longhands::background_color::SpecifiedValue::Numeric {
                             authored: Some("blue".to_string().into_boxed_str()),
-                            parsed: cssparser::RGBA::new(0, 0, 255, 255)
+                            parsed: RGBA::new(0, 0, 255, 255)
                         }),
                         Importance::Normal
                     ),
